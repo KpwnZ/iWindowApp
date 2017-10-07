@@ -44,6 +44,7 @@
 
 %hook SpringBoard
 -(void)applicationDidFinishLaunching:(id)application {
+
 	%orig;
 
 	if (!iOS10Later)
@@ -54,7 +55,7 @@
 	 // prepare for iWindowApp
 	UIWindow *window = [[UIWindow alloc] initWithFrame:CGRectMake(0, 0, kWidth, kHeight)];
 	UIView *hostView = [[UIView alloc] initWithFrame:window.bounds];
-	_UIBackdropView *backdockEffect = [[_UIBackdropView alloc] initWithPrivateStyle:1000];
+	_UIBackdropView *backdropkEffect = [[_UIBackdropView alloc] initWithPrivateStyle:1000];
 	UIView *appView;
 
 	window.windowLevel = UIWindowLevelStatusBar;
@@ -77,21 +78,21 @@
 	}while ([app pid] == -1);
 
 	// update settings and host the app.
-    UIMutableApplicationSceneSettings *settings = [app mainScene].mutableSettings;
+    	UIMutableApplicationSceneSettings *settings = [app mainScene].mutableSettings;
 
-    [settings setBackgrounded:NO];
-    [settings setInterfaceOrientation:UIApplication.sharedApplication.statusBarOrientation];
-    [[app mainScene] updateSettings:settings withTransitionContext:nil];
+    	[settings setBackgrounded:NO];
+    	[settings setInterfaceOrientation:UIApplication.sharedApplication.statusBarOrientation];
+    	[[app mainScene] updateSettings:settings withTransitionContext:nil];
 
-    //[[app mainScene].contextHostManager hostViewForRequester:@"iWinDowApp" enableAndOrderFront:true];
-    appView = (FBSceneHostWrapperView *)[[app mainScene].contextHostManager hostViewForRequester:@"iWinDowApp" enableAndOrderFront:YES];
+    	//[[app mainScene].contextHostManager hostViewForRequester:@"iWinDowApp" enableAndOrderFront:true];
+    	appView = (FBSceneHostWrapperView *)[[app mainScene].contextHostManager hostViewForRequester:@"iWinDowApp" enableAndOrderFront:YES];
 	appView.frame = CGRectMake(0, 0, kWidth, kHeight);
 
-    [hostView addSubview:backdockEffect];
-    [hostView addSubview:appView];
-    [window addSubview:hostView];
+    	[hostView addSubview:backdropEffect];
+    	[hostView addSubview:appView];
+    	[window addSubview:hostView];
 
-    hostView.transform=CGAffineTransformScale(hostView.transform, 0.6, 0.6);
+    	hostView.transform=CGAffineTransformScale(hostView.transform, 0.6, 0.6);
 
 }
 
