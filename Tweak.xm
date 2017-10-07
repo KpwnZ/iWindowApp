@@ -70,8 +70,8 @@
 		[[%c(FBProcessManager) sharedInstance] createApplicationProcessForBundleID:appBundleID];
 
 		dispatch_time_t delayTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC));
-        dispatch_after(delayTime, dispatch_get_main_queue(), ^{
-            [[UIApplication sharedApplication] launchApplicationWithIdentifier:appBundleID suspended:YES];
+        	dispatch_after(delayTime, dispatch_get_main_queue(), ^{
+            		[[UIApplication sharedApplication] launchApplicationWithIdentifier:appBundleID suspended:YES];
 			[[%c(FBProcessManager) sharedInstance] createApplicationProcessForBundleID:appBundleID];
         });
 
@@ -92,7 +92,7 @@
     	[hostView addSubview:appView];
     	[window addSubview:hostView];
 
-    	hostView.transform=CGAffineTransformScale(hostView.transform, 0.6, 0.6);
+    	hostView.transform=CGAffineTransformScale(hostView.transform, 0.5, 0.5);
 
 }
 
